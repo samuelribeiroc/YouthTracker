@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YouthTracker</title>
+
+        <script>
+            var postComment = () => {
+                let comment = document.getElementById('comment').value
+                fetch("/users", {
+                    headers: new Headers({'content-type': 'application/json'}),
+                    method: "POST",
+                    body: JSON.stringify({"comment": comment})
+                });
+            }
+
+            var getComments = () => {
+                let result = fetch('/users')
+                result.then(response => response.json()).then(
+                    function(data) {
+                        let res = "";
+                        data.forEach(element => {
+                            res += element.id + " | " + element.user;
+                        });
+                        document.getElementById("convert").innerHTML = res;
+                    }
+                )
+            }
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <h1>YouthTracker</h1>  
+        </header>
+
+        <section>
+            <p>Filtre as séries de acordo com seu subgênero:</p>
+            <select name="subgeneros">
+                <option value="terror">Terror</option>
+                <option value="comedia">Comédia</option>
+                <option value="musical">Musicais</option>
+                <option value="drama">Drama</option>
+                <option value="sobrenatural">Sobrenaturais</option>
+            </select>
+        </section>
+
+        <section>
+            <div>
+                <h3>Assistidas</h3>
+
+                <div>
+                    <div>
+                        <img src="https://br.web.img3.acsta.net/pictures/19/05/13/23/30/5582450.jpg" alt="Euphoria">
+                        <h4>Euphoria</h4>
+                        <span>Subgêneros:</span>
+                        <span>Drama</span>
+                        <br>
+                        <button value="GET" onclick="getComments()">Verificar os comentários sobre essa série</button>
+                        <br>
+                        <span>Adicionar um comentário:</span>
+                        <br>
+                        <input id="comment" type="text" />
+                        <button value="POST" onclick="postComment()">Postar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Lista de desejo</h3>
+            </div>
+
+            <div>
+                <h3>Nem pagando</h3>
+            </div>
+        </section>
+
+        <section>
+            <h3>
+                Sugestões
+            </h3>
+
+            <p>
+                Conhece alguma série com a temática que não está na lista? Sugere aqui:
+            </p>
+
+            <input type="text" id="recomendation" />
+            <input type="button" value="POST" onclick="" />
+        </section>
+    </body>
+</html>
