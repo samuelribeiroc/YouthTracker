@@ -1,16 +1,23 @@
 {
   "name": "youthtracker",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "A fim de facilitar a vida de todo amante de série adolescente, o YouthTracker foi desenvolvido como um controlador de quais séries teen você já viu, quais pretende ver e quais não tem interesse. Além disso, ainda é possível adicionar reviews as séries já vistas, marcar os personagens que mais gostou, ver a nota das que deseja assistir em sites como o IMDB e onde encontrá-las disponível nas plataformas de streaming. O YouthTracker também permite filtrar as séries por subgêneros, tais como: terror, comédia, musicais etc.",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelribeiroc/YouthTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samuelribeiroc/YouthTracker/issues"
+  },
+  "homepage": "https://github.com/samuelribeiroc/YouthTracker#readme",
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3"
   }
 }
