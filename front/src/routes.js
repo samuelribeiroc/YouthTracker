@@ -1,18 +1,16 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
-import Home from './pages/home';
-import Inventory from './pages/inventory';
-import Series from './pages/series';
+import Home from "./pages/home";
+import Inventory from "./pages/inventory";
+import Series from "./pages/series";
 
 export default function AppRoutes() {
     return (
-        <BrowserRouter>
             <Routes>
-                <Route path="/home" element={<Home />} />
-                <Route path="/inventory" element={<Inventory />} />
-                <Route path="/series" element={<Series />} />
+                <Route exact path="/" component={Home}/>
+                <Route path="/inventory" component={Inventory}/>
+                <Route path="/series" component={Series}/>
             </Routes>
-        </BrowserRouter>
     )
 }
