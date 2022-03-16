@@ -3,20 +3,18 @@ import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
     return (
+        <nav>
             <div>
-                <div>
-                    <h1>logo</h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="/api/home">Home</a></li>
-                        <li><a href="/api/series">Series</a></li>
-                        <li><a href="/api/inventory">Inventory</a></li>
-                    </ul>
-                </nav>
-                <div>
-                    <h1>login</h1>
-                </div>
+                Logo
             </div>
+            <ul>
+                <li><NavLink to="/api/">Home</NavLink></li>
+                <li><NavLink to="/api/series">Series</NavLink></li>
+                <li><NavLink to="/api/inventory">Inventory</NavLink></li>
+            </ul>
+            <div>
+                Usuario
+            </div>
+        </nav>
     )
 }

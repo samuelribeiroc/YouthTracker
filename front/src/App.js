@@ -10,7 +10,7 @@ import Series from "./pages/series";
 import './styles/global.css';
 
 export default function App () {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [seriesNotWatched, setSeriesNotWatched] = useState([]);
 
   useEffect(() => {
@@ -19,10 +19,6 @@ export default function App () {
       { name: "Skam", imageLink: "https://m.media-amazon.com/images/M/MV5BMzc5NmE5ZDItZGQxZC00ZTdhLThlYzktYjE0NWIyZDM3OGRlXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX1000_.jpg"}
     ])
   }, [])
-  
-  useEffect(() => {
-    document.title = "YouthTracker";
-  }, [])
 
   function openModal() {
     setIsModalOpen(true);
@@ -30,12 +26,16 @@ export default function App () {
 
   return (
     <>
-      <Modal isModalOpen={isModalOpen}/>
-      <Routes>
-        <Route exact path='/' component={Home} />
-        <Route path='/inventory' component={Inventory} />
-        <Route path='/series' component={Series} />
-      </Routes>
+      <BrowserRouter>
+        <Modal isModalOpen={isModalOpen}/>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/inventory" element={<Inventory />} />
+          <Route exact path="/series" element={<Series />} />
+        </Routes>
+        <Home />
+      </BrowserRouter>
     </>
   )
 }
