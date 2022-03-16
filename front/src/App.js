@@ -34,7 +34,6 @@ export default function App () {
           <Route exact path="/inventory" element={<Inventory />} />
           <Route exact path="/series" element={<Series />} />
         </Routes>
-        <Home />
       </BrowserRouter>
     </>
   )

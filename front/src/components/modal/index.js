@@ -5,13 +5,12 @@ export default function Modal (props) {
 
     return (
         <>
-            { isModalOpen ?
+            { isModalOpen &&
                 <div onClick={() => setIsModalOpen(false)}>
                     <div>
                         <p>conteúdo do modal</p>
                     </div>
-                </div> :
-                <></>
+                </div>
             }
         </>
     )
