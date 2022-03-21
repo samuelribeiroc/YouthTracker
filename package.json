@@ -4,7 +4,9 @@
   "description": "A fim de facilitar a vida de todo amante de série adolescente, o YouthTracker foi desenvolvido como um controlador de quais séries teen você já viu, quais pretende ver e quais não tem interesse. Além disso, ainda é possível adicionar reviews as séries já vistas, marcar os personagens que mais gostou, ver a nota das que deseja assistir em sites como o IMDB e onde encontrá-las disponível nas plataformas de streaming. O YouthTracker também permite filtrar as séries por subgêneros, tais como: terror, comédia, musicais etc.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,11 @@
   },
   "homepage": "https://github.com/samuelribeiroc/YouthTracker#readme",
   "dependencies": {
-    "body-parser": "^1.19.2",
-    "express": "^4.17.3"
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

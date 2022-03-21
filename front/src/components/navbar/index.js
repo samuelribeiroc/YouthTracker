@@ -8,9 +8,9 @@ export default function Navbar() {
                 Logo
             </div>
             <ul>
-                <li><NavLink to="/api/">Home</NavLink></li>
-                <li><NavLink to="/api/series">Series</NavLink></li>
-                <li><NavLink to="/api/inventory">Inventory</NavLink></li>
+                <li><NavLink to="/">Início</NavLink></li>
+                <li><NavLink to="/series">Séries</NavLink></li>
+                <li><NavLink to="/inventory">Inventário</NavLink></li>
             </ul>
             <div>
                 Usuario
