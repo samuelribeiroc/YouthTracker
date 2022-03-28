@@ -18,7 +18,7 @@ let series = [
         comment: '',
         type: 'notWatched',
         opinion: ''
-    },
+    }/*,
     {
         id: shortid.generate(),
         name: 'Skam',
@@ -124,7 +124,7 @@ let series = [
         mins: '45min',
         imageLink: 'https://uauposters.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/1/513320201013-uau-posters-series-glee-2.jpg',
         comment: '',
-        type: 'notWatched',
+        type: 'watched',
         opinion: ''
     },
     {
@@ -178,7 +178,7 @@ let series = [
         mins: '40min',
         imageLink: 'https://t.ctcdn.com.br/e1kwUlnBiBpdkeKMbyCEvaLNqWo=/1024x0/smart/i550929.jpeg',
         comment: '',
-        type: 'notWatched',
+        type: 'watched',
         opinion: ''
     },
     {
@@ -214,14 +214,14 @@ let series = [
         mins: '53min',
         imageLink: 'https://m.media-amazon.com/images/M/MV5BYTYwMWRjNmYtMzAyNy00OTJkLWI1ZjktNTQ1OTM1ODYxNDY2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg',
         comment: '',
-        type: 'notWatched',
+        type: 'watched',
         opinion: ''
-    }
+    }*/
 ]
 
 const getNotWatched = (_, res) => {
     const notWatched = series.filter(elem => elem.type === 'notWatched');
-    return res.status(200).json(notWatched);
+    return res.json(notWatched);
 }
 
 const getNotWatchedOne = (req, res) => {

@@ -66,7 +66,7 @@ export default function Modal (props) {
                                 </div>
                                 <div>
                                     <div>Gêneros</div>
-                                    {props.serie.genres.map((genre, index) => (
+                                    {props.serie.genres?.map((genre, index) => (
                                         <div key={index}>
                                             <div>{genre}</div>
                                         </div>
@@ -75,7 +75,7 @@ export default function Modal (props) {
                                 <div>{props.serie.synopsis}</div>^
                                 <div>
                                     <div>Elenco</div>
-                                    {props.serie.cast.map((act, index) => (
+                                    {props.serie.cast?.map((act, index) => (
                                         <div key={index}>
                                             <div>{act}</div>
                                         </div>

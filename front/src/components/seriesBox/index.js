@@ -127,7 +127,7 @@ export default function SeriesBox(props) {
                             </div>
                             <div>
                                 <div>
-                                    {filteredSeries.map((serie, index) => (
+                                    {filteredSeries?.map((serie, index) => (
                                         <div key={index}>
                                             <img src={serie.imageLink} onClick={() => {
                                                 click(serie)
@@ -148,14 +148,14 @@ export default function SeriesBox(props) {
                             </div>
                             <div>
                                 <div>
-                                    {genres.map((genre, index) => (
+                                    {genres?.map((genre, index) => (
                                         <div key={index}>
                                             <div onClick={selectgenre(genre)}>{genre}</div>
                                         </div>
                                     ))}
                                 </div>
                                 <div>
-                                    {filteredSeries.map((serie, index) => (
+                                    {filteredSeries?.map((serie, index) => (
                                         <div key={index}>
                                             <img src={serie.imageLink} onClick={() => {
                                                 click(serie)
@@ -180,7 +180,7 @@ export default function SeriesBox(props) {
                                     <div onClick={selectActives(false)}>Finalizadas</div>
                                 </div>
                                 <div>
-                                    {filteredSeries.map((serie, index) => (
+                                    {filteredSeries?.map((serie, index) => (
                                         <div key={index}>
                                             <img src={serie.imageLink} onClick={() => {
                                                 click(serie)
@@ -201,7 +201,7 @@ export default function SeriesBox(props) {
                             </div>
                             <div>
                                 <div>
-                                    {filteredSeries.map((serie, index) => (
+                                    {filteredSeries?.map((serie, index) => (
                                         <div key={index}>
                                             <img src={serie.imageLink} onClick={() => {
                                                 click(serie)
@@ -225,7 +225,7 @@ export default function SeriesBox(props) {
                             </div>
                             <div>
                                 <div>
-                                    {filteredSeries.map((serie, index) => (
+                                    {filteredSeries?.map((serie, index) => (
                                         <div key={index}>
                                             <img src={serie.imageLink} onClick={() => {
                                                 click(serie)
@@ -246,7 +246,7 @@ export default function SeriesBox(props) {
                             </div>
                             <div>
                                 <div>
-                                    {filteredSeries.map((serie, index) => (
+                                    {filteredSeries?.map((serie, index) => (
                                         <div key={index}>
                                             <img src={serie.imageLink} onClick={() => {
                                                 click(serie)
@@ -267,7 +267,7 @@ export default function SeriesBox(props) {
                             </div>
                             <div>
                                 <div>
-                                    {filteredSeries.map((serie, index) => (
+                                    {filteredSeries?.map((serie, index) => (
                                         <div key={index}>
                                             <img src={serie.imageLink} onClick={() => {
                                                 click(serie)
@@ -288,7 +288,7 @@ export default function SeriesBox(props) {
                             </div>
                             <div>
                                 <div>
-                                    {filteredSeries.map((serie, index) => (
+                                    {filteredSeries?.map((serie, index) => (
                                         <div key={index}>
                                             <img src={serie.imageLink} onClick={() => {
                                                 click(serie)

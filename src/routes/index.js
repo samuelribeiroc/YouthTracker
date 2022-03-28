@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const AppController = require('./controller/appController');
+const AppController = require('../controller/appController');
 
 //Pega todas as séries ainda não assistidas
-router.get('/seriesNotWatched', AppController.getNotWatched);
+router.get('/nwd', AppController.getNotWatched);
 
 //Pega a série não assistida pelo id para abrir o modal
 router.get('/seriesNotWatched/:id', AppController.getNotWatchedOne);
