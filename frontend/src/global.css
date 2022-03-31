@@ -1,0 +1,44 @@
+:root {
+    --background: #050505;
+    --box: #0f0f0f;
+    --secondaryBackground: #0b001c;
+    --darkTurquoise: #0f1c19;
+    --turquoise: #00cd9a;
+    --purple: #5200cc;
+    --font: #e6e6e6;
+    --hoverTurquoise: #009973;
+    --hoverPurple: #3d0099;
+    --hoverImage: #00251bcc;
+    --forModal: #000000d5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--background);
+  color: var(--font);
+}
+  
+button {
+  cursor: pointer;
+}
+
+body, input, textarea, button {
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--secondaryBackground);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border-radius: 5px;
+}
