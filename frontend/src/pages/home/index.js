@@ -1,9 +1,12 @@
 import React from "react";
+import { Logo, Title } from "./style";
+
+import LogoImage from "../../assets/youthtrackerlogo.png";
 
 export default function Home() {
     return (
         <>
-            <h1>Olá, seja bem-vinde!</h1>
+            <Title>Olá, seja bem-vinde ao <Logo src={LogoImage} /></Title>
         </>
     )
 }
