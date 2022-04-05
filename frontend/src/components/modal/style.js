@@ -43,7 +43,7 @@ export const ModalImage = styled.img`
     width: 22.5vw;
     height: 60vh;
     object-fit: cover;
-    margin: 4vh 0 0 2vw;
+    margin: 4vh 2vw;
 `
 
 export const ModalInfos = styled.div`
@@ -205,4 +205,22 @@ export const ModalMins = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+`
+
+//Não assistidas
+
+export const ModalContainerNWTC = styled.div`
+    display: flex;
+    flex-direction: column;
+    background: var(--secondaryBackground);
+    width: 80vw;
+    height: 90vh;
+    z-index: 2001;
+    border-radius: 20px;
+`
+
+export const ContainerNWTCTop = styled.div`
+    display: flex;
+    height: 70vh;
+    width: 100%;
 `

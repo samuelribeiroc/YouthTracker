@@ -15,11 +15,14 @@ import { ModalArea, ModalContainer, ModalImage, ModalInfos,
     ModalGenre, ModalInfosSynopsis, ModalSynopsis,
     ModalInfosCast, ModalCast, ModalAct, ModalInfosBottom,
     ModalImageGrid, ModalSeasons, ModalSeasonName,
-    ModalSeasonValue } from "./style";
+    ModalSeasonValue, 
+    ModalContainerNWTC,
+    ContainerNWTCTop} from "./style";
 
 export default function Modal(props) {
     const [editMode, setEditMode] = useState(false);
-    const [comment, setComment] = useState(props.serie.comment);
+    const [comment, setComment] = useState('');
+    const [didComment, setDidComment] = useState(false);
     const [opinion, setOpinion] = useState(props.serie.opinion);
     const [seen, setSeen] = useState(props.serie.type);
 
@@ -39,8 +42,14 @@ export default function Modal(props) {
     }
 
     async function doComment() {
+        const body = {
+            comment: comment,
+        }
         if (comment !== '') {
-            api.post(`/swtc/${props.serie.id}`, comment);
+            api.post(`/swtc/${props.serie.id}`, body);
+            setDidComment(true);
+        } else {
+            setDidComment(false);
         }
     }
     
@@ -121,51 +130,55 @@ export default function Modal(props) {
                     </ModalInfosBottom>
                 </ModalContainer>
                 :
-                <ModalContainer>
-                    <ModalImageGrid>
-                        <ModalImage src={props.serie.imageLink} alt={props.serie.name} />
-                    </ModalImageGrid>
-                    <div>
-                        <ModalInfosTop>
-                            <ModalPrincipalInfos>
-                                <ModalSerieName>{props.serie.name}</ModalSerieName>
-                                <ModalSecondaryInfos>{props.serie.onAir}</ModalSecondaryInfos>
-                            </ModalPrincipalInfos>
-                            <ModalNoteVisibility>
-                                <ModalImdbNote>
-                                    <ModalSerieNoteImdb>{props.serie.imdbNote}</ModalSerieNoteImdb>
-                                    <ModalSerieNote>/10</ModalSerieNote>
-                                    <AiFillStar />
-                                </ModalImdbNote>
-                                <ModalCloseButton onClick={() => props.setIsModalOpen(false)}><CloseIcon /></ModalCloseButton>
-                                <div>
-                                    { seen === 'watched' ?
-                                        <ModalChangeSeen onClick={turnSerieToNotWatched}>
-                                            <VisibilityOffIcon />
-                                            <div>Assistido</div>
-                                        </ModalChangeSeen>
-                                        :
-                                        <ModalChangeSeen onClick={turnSerieToWatched}>
-                                            <VisibilityIcon />
-                                            <div>Assistido</div>
-                                        </ModalChangeSeen>
-                                    }
-                                </div>
-                            </ModalNoteVisibility>
-                        </ModalInfosTop>
+                <ModalContainerNWTC>
+                    <ContainerNWTCTop>
                         <div>
-                            <div>Sua opinião sobre a série</div>
-                            <div>
-                                <div onClick={() => changeSerieOpinion('favorite')}>Favorita</div>
-                                <div onClick={() => changeSerieOpinion('liked')}>Gostei</div>
-                                <div onClick={() => changeSerieOpinion('abandoned')}>Abandonei</div>
-                            </div>
+                            <ModalImage src={props.serie.imageLink} alt={props.serie.name} />
                         </div>
-                        <ModalInfosSynopsis>
-                            <div style={{ fontSize: '1.5rem' }}>Sinopse</div>
-                            <ModalSynopsis>{props.serie.synopsis}</ModalSynopsis>
-                        </ModalInfosSynopsis>
-                        { props.serie.comment === '' ?
+                        <div>
+                            <div>
+                                <div>
+                                    <ModalSerieName>{props.serie.name}</ModalSerieName>
+                                    <ModalSecondaryInfos>{props.serie.onAir}</ModalSecondaryInfos>
+                                </div>
+                                <div>
+                                    <div>
+                                        <div>{props.serie.imdbNote}</div>
+                                        <div>/10</div>
+                                        <AiFillStar />
+                                    </div>
+                                    <ModalCloseButton onClick={() => props.setIsModalOpen(false)}><CloseIcon /></ModalCloseButton>
+                                    <div>
+                                        { seen === 'watched' ?
+                                            <ModalChangeSeen onClick={turnSerieToNotWatched}>
+                                                <VisibilityOffIcon />
+                                                <div>Assistido</div>
+                                            </ModalChangeSeen>
+                                            :
+                                            <ModalChangeSeen onClick={turnSerieToWatched}>
+                                                <VisibilityIcon />
+                                                <div>Assistido</div>
+                                            </ModalChangeSeen>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>Sua opinião sobre a série</div>
+                                <div>
+                                    <div onClick={() => changeSerieOpinion('favorite')}>Favorita</div>
+                                    <div onClick={() => changeSerieOpinion('liked')}>Gostei</div>
+                                    <div onClick={() => changeSerieOpinion('abandoned')}>Abandonei</div>
+                                </div>
+                            </div>
+                            <ModalInfosSynopsis>
+                                <div style={{ fontSize: '1.5rem' }}>Sinopse</div>
+                                <ModalSynopsis>{props.serie.synopsis}</ModalSynopsis>
+                            </ModalInfosSynopsis>
+                        </div>
+                    </ContainerNWTCTop>
+                    <div>
+                        { !didComment ?
                             <>
                                 <input placeholder="Escreva um comentário sobre o que achou da série"
                                         value={comment}
@@ -178,7 +191,7 @@ export default function Modal(props) {
                                     Seu Comentário
                                 </div>
                                 <div>
-                                    {props.serie.comment}
+                                    {comment}
                                 </div>
                                 { editMode ?
                                     <>
@@ -193,11 +206,11 @@ export default function Modal(props) {
                                     <button onClick={() => setEditMode(true)}>
                                         Editar
                                     </button>
-                                }                
+                                }
                             </>
                         }  
                     </div>
-                </ModalContainer>
+                </ModalContainerNWTC>
             }
         </ModalArea>
     )
