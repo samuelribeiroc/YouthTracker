@@ -27,10 +27,9 @@ export const Category = styled.div`
 
 export const Box = styled.div`
     display: flex;
-    position: relative;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 91vw;
     height: 65vh;
     border-radius: 10px;
     overflow-y: scroll;
@@ -40,10 +39,10 @@ export const Box = styled.div`
 export const BoxSeries = styled.div`
     display: grid;
     justify-items: center;
+    align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-row-gap: 4vh;
+    height: 100%;
     width: 100%;
-    margin: 4vh 2vw;
 `
 
 export const SerieCard = styled.div`
@@ -55,6 +54,7 @@ export const SerieCard = styled.div`
     height: 350px;
     border-radius: 5px;
     cursor: pointer;
+    margin: 20px;
 `
 
 export const SerieImage = styled.img`
@@ -89,6 +89,52 @@ export const SerieName = styled.div`
 export const BoxGenres = styled.div`
     display: flex;
     width: 100%;
-    height: 2vh;
+    height: 8vh;
     align-items: center;
+    justify-content: space-between;
+`
+
+export const GenresList = styled.div`
+    display: flex;
+    margin-left: 1.2vw;
+`
+
+export const Genre = styled.div`
+    padding: 3px 10px;
+    background: var(--purple);
+    border-radius: 5px;
+    font-weight: 300;
+    cursor: pointer;
+    margin-right: 1vw;
+
+    &:hover {
+        background: var(--hoverPurple);
+    }
+`
+
+export const SelectedGenre = styled.div`
+    margin-right: 1.2vw;
+    color: var(--turquoise);
+    font-weight: 700;
+`
+
+export const BoxActiveInactive = styled.div`
+    display: flex;
+    width: 100%;
+    height: 8vh;
+    align-items: center;
+    justify-content: center;
+`
+
+export const ActiveInactive = styled.div`
+    padding: 3px 10px;
+    background: var(--purple);
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0 7vw;
+
+    &:hover {
+        background: var(--hoverPurple);
+    }
 `

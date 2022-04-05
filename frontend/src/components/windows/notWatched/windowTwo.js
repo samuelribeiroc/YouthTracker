@@ -8,7 +8,10 @@ BoxSeries,
 SerieCard,
 SerieImage,
 SerieName,
-BoxGenres } from "../styles";
+BoxGenres, 
+GenresList,
+Genre,
+SelectedGenre} from "../styles";
 
 import Modal from "../../modal";
 
@@ -17,6 +20,7 @@ export default function ByGenres(props) {
     const [genres, setGenres] = useState([]);
     const [genreSelected, setGenreSelected] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [serieOpened, setSerieOpened] = useState({});
 
     useEffect(() => {
         api.get('/genre').then((res) => {
@@ -37,8 +41,14 @@ export default function ByGenres(props) {
         })
     }
 
+    async function click(serie) {
+        setSerieOpened(serie);
+        setIsModalOpen(true);
+    }
+
     return (
         <>
+            { isModalOpen && <Modal serie={serieOpened} setIsModalOpen={setIsModalOpen} /> }
             <Categories>
                 <Category onClick={() => props.setWindow(0)}>Todas</Category>
                 <Category selected onClick={() => props.setWindow(1)}>Gêneros</Category>
@@ -47,19 +57,20 @@ export default function ByGenres(props) {
             </Categories>
             <Box>
                 <BoxGenres>
-                    {genres?.map((genre, index) => (
-                        <div key={index}>
-                            <div onClick={() => selectGenre(genre)}>{genre}</div>
-                        </div>
-                    ))}
-                    <div>{genreSelected}</div>
+                    <GenresList>
+                        {genres?.map((genre, index) => (
+                            <Genre key={index} onClick={() => selectGenre(genre)}>
+                                {genre}
+                            </Genre>
+                        ))}
+                    </GenresList>
+                    <SelectedGenre>{genreSelected}</SelectedGenre>
                 </BoxGenres>
                 <BoxSeries>
                     {filteredSeries?.map((serie, index) => (
                         <SerieCard key={index}>
                             <SerieImage src={serie.imageLink} alt={serie.name} />
-                            <SerieName onClick={() => setIsModalOpen(true)}>{serie.name}</SerieName>
-                            { isModalOpen && <Modal serie={serie} setIsModalOpen={setIsModalOpen} /> }
+                            <SerieName onClick={() => click(serie)}>{serie.name}</SerieName>
                         </SerieCard>
                     ))}
                 </BoxSeries>

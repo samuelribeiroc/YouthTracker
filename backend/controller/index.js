@@ -303,7 +303,7 @@ const turnToNotWatched = (req, res) => {
 
 const addComment = (req, res) => {
     const { id } = req.params;
-    const { comment } = req.comment;
+    const { comment } = req.body;
 
     const ret = series.filter(elem => elem.id === id);
 

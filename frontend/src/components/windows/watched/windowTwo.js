@@ -14,6 +14,7 @@ import Modal from "../../modal";
 export default function Favorites(props) {
     const [filteredSeries, setFilteredSeries] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [serieOpened, setSerieOpened] = useState({});
 
     useEffect(() => {
         api.get('/opinion/favorite').then((res) => {
@@ -25,8 +26,14 @@ export default function Favorites(props) {
         }
     }, []);
 
+    async function click(serie) {
+        setSerieOpened(serie);
+        setIsModalOpen(true);
+    }
+
     return (
         <>
+            { isModalOpen && <Modal serie={serieOpened} setIsModalOpen={setIsModalOpen} /> }
             <Categories>
                 <Category onClick={() => props.setWindow(0)}>Todas</Category>
                 <Category selected onClick={() => props.setWindow(1)}>Favoritas</Category>
@@ -38,8 +45,7 @@ export default function Favorites(props) {
                     {filteredSeries?.map((serie, index) => (
                         <SerieCard key={index}>
                             <SerieImage src={serie.imageLink} alt={serie.name} />
-                            <SerieName onClick={() => setIsModalOpen(true)}>{serie.name}</SerieName>
-                            { isModalOpen && <Modal serie={serie} setIsModalOpen={setIsModalOpen} /> }
+                            <SerieName onClick={() => click(serie)}>{serie.name}</SerieName>
                         </SerieCard>
                     ))}
                 </BoxSeries>
